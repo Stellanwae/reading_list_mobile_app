@@ -34,7 +34,7 @@ onValue(booksInDb, function(snapshot){
         {
             let bookToBeRemovedInDb = ref(database, `books/${bookID}`)
         })
-
+        
 
 
     }
