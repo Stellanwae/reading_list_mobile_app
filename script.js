@@ -4,11 +4,11 @@ import { getDatabase, ref, push, remove, onValue } from "https://www.gstatic.com
 let inputEl = document.getElementById("input-el")
 let buttonEL = document.getElementById("button-el")
 let ulEl = document.getElementById("ul-el")
-let liEl = document.querySelector("li")
+
 
 //initialise app
 let appSettings = {
-    databaseURL: "https://books-mobile-app-default-rtdb.asia-southeast1.firebasedatabase.app/"
+    databaseURL: "https://check-reader-b24d1-default-rtdb.asia-southeast1.firebasedatabase.app/"
 }
 const app = initializeApp(appSettings)
 let database = getDatabase(app)
@@ -22,26 +22,48 @@ buttonEL.addEventListener("click", function(){
     inputEl.value = ""
 })
 
-liEl.addEventListener("click", function(){
-    
-})
-
 onValue(booksInDb, function(snapshot){
-    let booksArray = Object.values(snapshot.val())
-    
-    for (let i = 0; i < booksArray.length(); i++) {
+    if (snapshot.exists()) {
+        let booksArray = Object.entries(snapshot.val())
 
-        console.log(booksArray[i])
+        clearContent()
+    
+        for (let i = 0; i < booksArray.length; i++){
+            let currentShelf = booksArray[i]
+            let bookId = currentShelf[0]
+            let bookValue = currentShelf[1]
+
+            renderBooks(currentShelf)
+            console.log(booksArray[i])
+        }
+    }else {
+        ulEl.innerHTML = "Nothing here yet ..."
     }
-    //console.log(booksArray)
-    //renderBooks(booksArray)
+  
+   
+
 
 
 })
 
 
+function renderBooks(array) {
+    let itemID = array[0]
+    let itemValue = array[1] 
 
+    let li = document.createElement("li")
+    li.textContent = itemValue
+    ulEl.append(li)
 
+    li.addEventListener("click", function(){
+        let itemToRemove = ref(database, `books/${itemID}`)
+        remove(itemToRemove)
+    })
+}
+
+function clearContent(){
+    ulEl.innerHTML = " "
+}
 
 
 

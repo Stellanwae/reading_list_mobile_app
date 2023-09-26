@@ -67,3 +67,7 @@ li {
     color: white;
     font-weight: lighter;
 }
+
+li:hover {
+    transform: scale(1.1)
+}
