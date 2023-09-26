@@ -4,6 +4,7 @@ import { getDatabase, ref, push, remove, onValue } from "https://www.gstatic.com
 let inputEl = document.getElementById("input-el")
 let buttonEL = document.getElementById("button-el")
 let ulEl = document.getElementById("ul-el")
+let liEl = document.querySelector("li")
 
 //initialise app
 let appSettings = {
@@ -20,6 +21,77 @@ buttonEL.addEventListener("click", function(){
     push(booksInDb, inputVal)
     inputEl.value = ""
 })
+
+liEl.addEventListener("click", function(){
+    
+})
+
+onValue(booksInDb, function(snapshot){
+    let booksArray = Object.values(snapshot.val())
+    
+    for (let i = 0; i < booksArray.length(); i++) {
+
+        console.log(booksArray[i])
+    }
+    //console.log(booksArray)
+    //renderBooks(booksArray)
+
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*onValue(booksInDb, function(snapshot){
     let booksArray = Object.entries(snapshot.val())

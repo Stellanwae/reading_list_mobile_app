@@ -13,6 +13,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     max-width: 50%;
 }
 button {
@@ -22,11 +23,9 @@ button {
     padding: 10px 24px;
     border-radius: 25px;
     font-size: 20px;
-    right:350px;
-    margin-left: 15px;
     font-family: inherit;
     font-weight: bold;
-    width: 290px;
+    width: 90%;
     margin: 0 auto;
 }
 
@@ -35,7 +34,7 @@ input {
     margin-bottom: 30px;
     border-radius: 25px;
     border: none;
-    width: 240px;
+    width: 90%;
     text-align: center;
     padding: 10px 24px;
     box-shadow: 2px 2px 2px lightgray;
@@ -43,11 +42,28 @@ input {
 }
 img {
     border-radius: 50%;
-    width: 200px;
+    width: 50%;
     margin: 30px auto;
 }
 
 
 button:hover {
     transform: scale(1.1);
+}
+#ul-el {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+li {
+    list-style-type: none;
+    background-color: lightcoral;
+    padding: 1rem;
+    margin: 10px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    color: white;
+    font-weight: lighter;
 }
