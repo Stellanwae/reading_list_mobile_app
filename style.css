@@ -6,8 +6,15 @@ body {
     align-items: center;
     font-family: 'Sora', sans-serif;
     user-select: none;
+    
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 50%;
+}
 button {
     background-color: #fca311;
     border: none;
@@ -19,20 +26,25 @@ button {
     margin-left: 15px;
     font-family: inherit;
     font-weight: bold;
+    width: 290px;
+    margin: 0 auto;
 }
 
 input {
     line-height: 25px;
+    margin-bottom: 30px;
     border-radius: 25px;
     border: none;
     width: 240px;
+    text-align: center;
     padding: 10px 24px;
+    box-shadow: 2px 2px 2px lightgray;
   
 }
 img {
     border-radius: 50%;
     width: 200px;
-    margin-bottom: 30px;
+    margin: 30px auto;
 }
 
 

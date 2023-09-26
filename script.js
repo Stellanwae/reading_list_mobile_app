@@ -1,24 +1,27 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
-import { getDatabase, ref, push, remove, onValue } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.j"
+import { getDatabase, ref, push, remove, onValue } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
 
 let inputEl = document.getElementById("input-el")
 let buttonEL = document.getElementById("button-el")
 let ulEl = document.getElementById("ul-el")
-let inputVal = ""
+
 //initialise app
-const app = initializeApp("https://books-mobile-app-default-rtdb.asia-southeast1.firebasedatabase.app/")
+let appSettings = {
+    databaseURL: "https://books-mobile-app-default-rtdb.asia-southeast1.firebasedatabase.app/"
+}
+const app = initializeApp(appSettings)
 let database = getDatabase(app)
 let booksInDb = ref(database, "books")
 
 buttonEL.addEventListener("click", function(){
-    inputEl.value = ""
-    inputVal = inputEl.value
+    
+    let inputVal = inputEl.value
 
     push(booksInDb, inputVal)
-    
+    inputEl.value = ""
 })
 
-onValue(booksInDb, function(snapshot){
+/*onValue(booksInDb, function(snapshot){
     let booksArray = Object.entries(snapshot.val())
 
     for (let i = 0; i < booksArray.length(); i++) {
@@ -39,4 +42,4 @@ onValue(booksInDb, function(snapshot){
 
     }
 })
-
+*/
